@@ -1,0 +1,26 @@
+		;
+		;homework 10.6(2) written by Wang Rui Hua(161250143)
+		;intention:计算10*5的结果，使用移位指令。
+            .DATA	x00006000
+            .TEXT   x40000000
+            .GLOBAL  MAIN
+MAIN :      ADDI    R8, R0, #5
+            ADDI    R9, R0, #10
+            ADDI    R10, R0, 0
+            ADDI    R11, R0, #33
+		;
+LOOP :      ANDI    R12, R8, x1
+            SRLI    R8, R8, X1
+            SUBI    R11, R11, 1
+            BEQZ    R11, EXIT
+            BEQZ    R12, SITUATION
+		;
+            ADD     R10, R10, R9
+            SLLI    R9,R9,#1
+            J       LOOP
+SITUATION : SLLI    R9, R9, #1
+            J       LOOP
+		;
+EXIT :      TRAP    X00
+
+

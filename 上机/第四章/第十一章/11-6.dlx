@@ -1,0 +1,27 @@
+		;这是11-6上机
+		;written by Wang Rui Hua(161250143)
+            .DATA	x30000000
+            .TEXT   x40000000
+            .GLOBAL  MAIN
+MAIN :      LHI     R8, X3000
+            ADDI    R10, R0, #0
+            ADDI    R11, R0, #0
+LOOP :      LW      R9, 0(R8)
+            SEQI    R12, R9, #-1
+            BNEZ    R12, EXIT
+            ANDI    R9, R9, #1
+            BEQZ    R9, NEXT
+            ADDI    R10, R10, #1		;R10 统计奇数个数
+            ADDI    R8, R8, #4
+            J       LOOP
+NEXT :      ADDI    R11, R11, #1		;R11统计偶数个数
+            ADDI    R8, R8, #4
+            J       LOOP
+		;
+EXIT :      TRAP    X00
+
+
+
+
+
+

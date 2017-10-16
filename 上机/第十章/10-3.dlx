@@ -1,0 +1,16 @@
+		;
+		;homework-10.3 written by Wang Rui Hua(161250143)
+		;intention:output the letterA-Z
+            .DATA	x00006000
+            .TEXT   x40000000
+            .GLOBAL  MAIN
+MAIN :      ADDI    R17, R0, x1A
+            ADDI    R4, R0, x41
+LOOP :      TRAP    x07
+            ADDI    R4, R4, x1
+            SUBI    R17, R17, x1
+            BNEZ    R17, LOOP
+            TRAP    x00
+
+
+

@@ -1,0 +1,21 @@
+		;这是11-2上机题目，对于键盘输入10以下的整数，这里简单地采取ASC码转化法
+		;written by Wang Rui Hua(161250143)
+            .DATA	x00003000
+            .TEXT   x40000000
+            .GLOBAL  MAIN
+MAIN :      TRAP    x06
+            SUBI    R4, R4, #48
+            ADDI    R8, R8, #1
+            ADDI    R9, R9, #1
+            ADDI    R11, R0, #1
+		;
+LOOP:       SLT     R12, R11, R4
+            BEQZ    R12, EXIT
+            ADD     R10, R9, R8
+            ADD     R8, R9, R0
+            ADD     R9, R10, R0
+            ADDI    R11, R11, #1
+            J       LOOP
+		;
+EXIT :      ADDI    R1, R9, #0
+            TRAP    X00

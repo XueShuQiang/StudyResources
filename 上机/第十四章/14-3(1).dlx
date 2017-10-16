@@ -1,0 +1,26 @@
+		;ÉÏ»ú14-3£¨1£©
+            .DATA	x30000000
+            .TEXT   x40000000
+            .GLOBAL  MAIN
+MAIN :      TRAP    x09
+            SUBI    R4, R4, #48
+            ADDI    R1, R4, #0
+            TRAP    X09
+            SUBI    R4, R4, #48
+            ADD     R4, R1, R4
+            SUBI    R8, R4, #10
+            SLTI    R9, R8, #0
+            BEQZ    R9, NEXT
+            ADDI    R4, R4, #48
+            TRAP    X07
+            J       EXIT
+NEXT :      ADDI    R4, R0, #49
+            TRAP    X07
+            ADDI    R4, R8, #0
+            ADDI    R4, R4, #48
+            TRAP    X07
+            J       EXIT
+EXIT :      TRAP    x00
+
+
+
