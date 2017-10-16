@@ -1,0 +1,24 @@
+		;homework 11-3£¬writen by Wang Rui Hua(161250143) 
+            .DATA	x30000000
+            .TEXT   x40000000
+            .GLOBAL  MAIN
+MAIN :      LHI     R8, X3000
+            ADDI    R12, R0, #0
+            TRAP    X06
+LOOP :      LW      R9, 0(R8)
+            SEQI    R11, R9, #4
+            BNEZ    R11, EXIT
+            SEQ     R10, R9, R4
+            BNEZ    R10, NEXT
+            ADDI    R8, R8, #4
+            J       LOOP
+		;
+NEXT :      ADDI    R12, R12, #1
+            ADDI    R8, R8, #4
+            J       LOOP
+		;
+EXIT :      ADDI    R4, R12, #0
+            TRAP    X07
+            TRAP    X00
+
+

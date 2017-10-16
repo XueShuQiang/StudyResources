@@ -1,0 +1,27 @@
+		;home work 10-7,written by Wang Rui Hua
+		;两个正整数相除，除数R8 被除数R9 存储在R10 商R11
+		;特别强调,r8和r9的值可以根据需要随便设置
+            .DATA	x00003000
+            .TEXT   x40000000
+            .GLOBAL  MAIN
+MAIN :      ADDI    R10, R0, #0
+            ADDI    R8, R0, #4
+            ADDI    R9, R0, #25
+            ADD     R12, R0, R9
+LOOP :      SUB     R12, R12, R8
+            SLTI    R14, R12, x0
+            BNEZ    R14, EXIT
+            ADDI    R10, R10, #1
+            J       LOOP
+		;
+EXIT :      ADD     R11, R12, R8
+            TRAP    x00
+
+
+
+
+
+
+
+
+

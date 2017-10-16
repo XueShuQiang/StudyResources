@@ -1,0 +1,25 @@
+		;14-2ÉÏ»ú£¬written by Wang Rui Hua(161250143)
+            .DATA	x30000000
+            .TEXT   x40000000
+            .GLOBAL  MAIN
+MAIN :      LHI     R8, x3000
+            LW      R9, 0(R8)
+            SLTI    R10, R9, X7B
+            BEQZ    R10, NEXT
+            SLTI    R10, R9, X61
+            BNEZ    R10, NEXT
+            J       TOUPPER
+		;
+NEXT :      SEQI    R10, R9, X4
+            BNEZ    R10, EXIT
+            ADDI    R8, R8, X4
+            J       MAIN
+TOUPPER :   SUBI    R9, R9, #32
+            SW      0(R8), R9
+            ADDI    R8, R8, X4
+            J       MAIN
+EXIT :      TRAP    X00
+
+
+
+
